@@ -1,6 +1,18 @@
-<?php 
+<?php
 include 'koneksi.php';
-$id  = $_GET['id'];
 
-mysqli_query($koneksi, "delete from motor where id_motor='$id'");
-header("location:data_motor.php");
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+
+  $query = "DELETE FROM motor WHERE id_motor = '$id'";
+  $result = mysqli_query($koneksi, $query);
+
+  if ($result) {
+    header("Location: data_motor.php");
+    exit();
+  } else {
+    echo "Gagal menghapus data: " . mysqli_error($koneksi);
+  }
+} else {
+  echo "ID tidak ditemukan.";
+}

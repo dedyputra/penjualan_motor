@@ -1,35 +1,50 @@
 <?php
-
 include 'koneksi.php';
 
-$nama = $_POST['nama'];
-$tipe = $_POST['tipe'];
-$harga = $_POST['harga'];
-$stok = $_POST['stok'];
+// Ambil data dari form
+$nama   = $_POST['nama'];
+$tipe   = $_POST['tipe'];
+$harga  = $_POST['harga'];
+$stok   = $_POST['stok'];
 $detail = $_POST['detail'];
 
-$namaFile = $_FILES['gambar']['name'];
-$namaSementara = $_FILES['gambar']['tmp_name'];
+// Upload file
+$namaFile      = $_FILES['gambar']['name'];
+$tmpFile       = $_FILES['gambar']['tmp_name'];
+$ukuranFile    = $_FILES['gambar']['size'];
+$extValid      = ['jpg', 'jpeg', 'png', 'gif'];
+$uploadDir     = "upload/";
+$ext           = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
 
-// tentukan lokasi file akan dipindahkan
-$dirUpload = "upload/";
-
-// pindahkan file
-$terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
-
-if (!$terupload) {
-	echo "Upload Gagal!";
-	die();
+// Validasi ekstensi file
+if (!in_array($ext, $extValid)) {
+	echo "Format gambar tidak didukung. Hanya jpg, jpeg, png, gif.";
+	exit;
 }
 
-$path = $dirUpload . $namaFile;
+// Validasi ukuran file (maks 2MB)
+if ($ukuranFile > 2 * 1024 * 1024) {
+	echo "Ukuran file terlalu besar. Maksimum 2MB.";
+	exit;
+}
 
-$sql = mysqli_query($koneksi, "INSERT INTO motor (nama,harga,tipe,stok,gambar,detail)
-VALUES ('$nama','$harga','$tipe','$stok','$path','$detail')");
-header("location:index.php");
+// Rename file dengan nama unik
+$namaBaru = uniqid('motor_', true) . '.' . $ext;
+$path     = $uploadDir . $namaBaru;
 
-if (mysqli_query($koneksi, $sql)) {
-	header("Location: index.php");
+// Pindahkan file
+if (move_uploaded_file($tmpFile, $path)) {
+	// Gunakan prepared statement untuk mencegah SQL injection
+	$stmt = $koneksi->prepare("INSERT INTO motor (nama, harga, tipe, stok, gambar, detail) VALUES (?, ?, ?, ?, ?, ?)");
+	$stmt->bind_param("sissss", $nama, $harga, $tipe, $stok, $path, $detail);
+
+	if ($stmt->execute()) {
+		header("Location: index.php");
+		exit;
+	} else {
+		echo "Gagal menambahkan data: " . $stmt->error;
+	}
+	$stmt->close();
 } else {
-	echo "Tambah data gagal";
+	echo "Upload gambar gagal!";
 }

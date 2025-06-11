@@ -3,7 +3,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-fw fa-motorcycle"></i>
         </div>
@@ -52,15 +52,7 @@
           <span>Data Transaksi</span>
         </a>
       </li>
-      <div class="sidebar-heading">
-        Tukar Tambah
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="fas fa-fw fa-motorcycle"></i>
-          <span>Data Tukar Tambah</span>
-        </a>
-      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar Toggler (Sidebar) -->

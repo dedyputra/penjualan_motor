@@ -9,7 +9,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-fw fa-motorcycle"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Sorum Motor<sup></sup></div>
       </a>
 
       <!-- Divider -->
@@ -17,7 +17,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index_user.php">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-motorcycle"></i>
           <span>Dashboard</span></a>
       </li>
