@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $nama = 'root';
-$pass = '';
+$pass = '1234';
 $db = 'sorum_motor';
 
-$koneksi = mysqli_connect($host, $nama,$pass, $db);
+$koneksi = mysqli_connect($host, $nama, $pass, $db);
