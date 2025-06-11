@@ -1,5 +1,7 @@
 <?php
 require 'cek-sesi.php';
+require 'cek-user.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,30 @@ require 'cek-sesi.php';
       <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
       </button>
+
+      <!-- Topbar Search -->
+      <h1> Selamat Datang, <?= $_SESSION['nama'] ?></h1>
+
+
+      <!-- Tambahkan bagian dropdown user -->
+      <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" src="img/boy(2).png">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="keluar.php" data-toggle="modal" data-target="#logoutModal">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+            </a>
+          </div>
+        </li>
+      </ul>
     </nav>
+
     <!-- End of Topbar -->
 
     <!-- Begin Page Content -->
@@ -59,6 +84,12 @@ require 'cek-sesi.php';
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah User</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <?php
+                    $query = mysqli_query($koneksi, "SELECT * FROM admin");
+                    echo mysqli_num_rows($query);
+                    ?>
+                  </div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -74,6 +105,12 @@ require 'cek-sesi.php';
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Jumlah Produk</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <?php
+                    $query = mysqli_query($koneksi, "SELECT id_motor FROM motor");
+                    echo mysqli_num_rows($query);
+                    ?>
+                  </div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -89,6 +126,12 @@ require 'cek-sesi.php';
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Data Transaksi</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <?php
+                    $query = mysqli_query($koneksi, "SELECT id_transaksi FROM transaksi");
+                    echo mysqli_num_rows($query);
+                    ?>
+                  </div>
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                     </div>
@@ -99,6 +142,18 @@ require 'cek-sesi.php';
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Deskripsi Sorum -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Jual Beli Sepeda Motor (Sorum Cahaya Motor)</h6>
+          </div>
+          <div class="card-body">
+            <p>Sorum Cahaya Motor ini adalah tempat jual beli sepeda motor bekas yang berkwalitas menerima pembayaran cash maupun cicilan. Kami menyediakan berbagai jenis motor seperti matic, bebek, dan lainnya.
+              Kami juga memberikan pelayanan terbaik untuk kepuasan pelanggan. Silakan kunjungi kami untuk melihat koleksi motor yang tersedia dan mendapatkan penawaran terbaik.</p>
+            </p>
           </div>
         </div>
 

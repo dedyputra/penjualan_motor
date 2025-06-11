@@ -15,6 +15,11 @@ include 'koneksi.php';
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <style>
+    .modal-body textarea {
+      resize: vertical;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,7 +32,7 @@ include 'koneksi.php';
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="min-width: 1200px;">
             <thead>
               <tr>
                 <th>No</th>
@@ -56,19 +61,21 @@ include 'koneksi.php';
                   <td><?php echo $d['catatan']; ?></td>
                   <td><?php echo $d['jumlah_beli']; ?></td>
                   <td><?php echo $d['total_bayar']; ?></td>
-                  <td>
-                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_transaksi_<?php echo $d['id_transaksi'] ?>">
-                      <i class="fa fa-cog"></i>
-                    </button>
-                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus_transaksi_<?php echo $d['id_transaksi'] ?>">
-                      <i class="fa fa-trash"></i>
-                    </button>
+                  <td class="text-nowrap">
+                    <div class="d-flex flex-wrap">
+                      <button class="btn btn-warning btn-sm me-2 mb-2" data-toggle="modal" data-target="#edit_transaksi_<?php echo $d['id_transaksi'] ?>">
+                        <i class="fa fa-cog"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm mb-2" data-toggle="modal" data-target="#hapus_transaksi_<?php echo $d['id_transaksi'] ?>">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
                   </td>
                 </tr>
 
                 <!-- Modal Edit -->
                 <div class="modal fade" id="edit_transaksi_<?php echo $d['id_transaksi'] ?>" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                       <form action="update_transaksi.php" method="post">
                         <div class="modal-header">
@@ -117,7 +124,7 @@ include 'koneksi.php';
 
                 <!-- Modal Hapus -->
                 <div class="modal fade" id="hapus_transaksi_<?php echo $d['id_transaksi'] ?>" tabindex="-1" role="dialog">
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title">Konfirmasi Hapus</h5>
