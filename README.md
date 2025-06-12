@@ -15,6 +15,7 @@ Platform ini memiliki dua jenis akses:
 - Sistem transaksi jual beli
 - Dashboard Admin yang informatif
 - Tampilan sederhana dan mudah digunakan
+- Hak Akses User & Admin
 
 ---
 
@@ -24,41 +25,3 @@ Platform ini memiliki dua jenis akses:
 
 ```bash
 git clone https://github.com/dedyputra/penjualan_motor.git
-
-
- 2. Pindahkan ke Folder Server Lokal
-
-Database untuk XAMPP:
-
-C:\xampp\htdocs\penjualan_motor
-
-
-### 3. Import Database
-
-    Buka phpMyAdmin
-
-    Buat database baru, misalnya: penjualan_motor
-
-    Import file database .sql yang disediakan dalam folder project
-
-
-### 4. Akses Aplikasi di Browser
-🔐 Login Admin
-
-    URL: http://localhost/penjualan_motor/login.php
-
-    Email: dedy@gmail.com
-
-    Password: 1234
-
-👤 Login User
-
-    URL: http://localhost/penjualan_motor/login_user.php
-
-    Email: user@gmail.com
-
-    Password: 123
-
-
-
-
