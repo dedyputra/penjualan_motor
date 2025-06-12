@@ -133,6 +133,11 @@ require 'cek-sesi.php';
                                 <button type="submit" class="btn btn-success">Ubah</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                               </div>
+
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+                              </div>
                             <?php
                             }
                             //mysql_close($host);

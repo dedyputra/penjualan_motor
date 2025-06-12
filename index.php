@@ -2,6 +2,11 @@
 require 'cek-sesi.php';
 require 'cek-admin.php';
 require 'koneksi.php';
+
+if ($_SESSION['level'] != "admin") {
+  header("location:index_user.php?pesan=akses_ditolak");
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

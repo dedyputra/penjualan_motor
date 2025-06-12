@@ -2,6 +2,11 @@
 require 'cek-sesi.php';
 require 'cek-user.php';
 
+if ($_SESSION['level'] != "user") {
+  header("location:index.php?pesan=akses_ditolak");
+  exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
