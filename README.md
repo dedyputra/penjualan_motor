@@ -3,7 +3,7 @@
 **Sorum Cahaya Motor** adalah platform jual beli sepeda motor bekas berkualitas. Kami menyediakan berbagai jenis motor seperti **matic**, **bebek**, dan lainnya, dengan pilihan pembayaran **tunai maupun cicilan**. Komitmen kami adalah memberikan **pelayanan terbaik** demi kepuasan pelanggan.
 
 Platform ini memiliki dua jenis akses:
-- **Admin**: Mengelola data motor, pengguna, dan transaksi.
+- **Admin**: Mengelola data motor dan transaksi.
 - **User**: Melakukan pembelian motor secara online.
 
 ---
